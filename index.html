@@ -1,9 +1,9 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Byko (Hubby)</title>
+  <title>For My Ukya</title>
   <style>
     /* General body styles */
     body {
@@ -18,7 +18,7 @@
     /* Hero Section with Big Photo */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x1000'); /* Replace with your image */
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x1000'); /* Replace with your background image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -99,6 +99,13 @@
       background-color: #ff4500;
     }
 
+    .call-screen img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
@@ -167,17 +174,18 @@
 
   <!-- Hero Section with Big Photo -->
   <div class="hero">
-    <h1>For My Hubby</h1>
-    <button onclick="startCall()">Call Hubby</button>
+    <h1>For My Ukya</h1>
+    <button onclick="startCall()">Call Ukya</button>
   </div>
 
   <!-- Fake Phone Call Screen -->
   <div class="call-screen" id="callScreen">
+    <img src="1.jpg" alt="Ukya's photo"> <!-- Replace with Ukya's actual photo -->
     <h2>Incoming Call</h2>
-    <p>From: <strong>Hubby</strong></p>
+    <p>From: <strong>Ukya</strong></p>
     <p>Phone: <strong>9529801391</strong></p>
     <p class="call-status" id="callStatus">Dialing...</p>
-    <button class="end-call" onclick="endCall()">End Call</button>
+    <a href="tel:9529801391"><button class="end-call">End Call</button></a>
   </div>
 
   <script>
@@ -194,16 +202,6 @@
       setTimeout(function() {
         document.getElementById("callStatus").textContent = "Call Connected!";
       }, 4000); // Change status to "Connected" after 4 seconds
-
-      // Use a 'tel:' link to simulate a phone call on mobile devices
-      setTimeout(function() {
-        window.location.href = "tel:9529801391"; // Initiate the phone call
-      }, 6000); // After the fake "connected" status, initiate the real call
-    }
-
-    // Function to end the call
-    function endCall() {
-      document.getElementById("callScreen").style.display = "none";
     }
   </script>
 
