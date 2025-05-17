@@ -1,0 +1,211 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Byko (Hubby)</title>
+  <style>
+    /* General body styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    /* Hero Section with Big Photo */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x1000'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      margin: 0;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ff6347;
+      border: none;
+      font-size: 1.5em;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #ff4500;
+    }
+
+    /* Phone Call Screen (Mobile-Friendly) */
+    .call-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      z-index: 9999;
+      animation: fadeIn 1s ease-in-out;
+      padding: 20px;
+    }
+
+    .call-screen h2 {
+      font-size: 2.5em;
+      margin: 20px;
+    }
+
+    .call-screen p {
+      font-size: 1.4em;
+      margin: 10px;
+    }
+
+    .call-screen .call-status {
+      font-size: 1.2em;
+      margin: 20px;
+    }
+
+    .call-screen .end-call {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #ff6347;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .call-screen .end-call:hover {
+      background-color: #ff4500;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+
+      .hero button {
+        padding: 12px 25px;
+        font-size: 1.3em;
+      }
+
+      .call-screen h2 {
+        font-size: 2em;
+      }
+
+      .call-screen p {
+        font-size: 1.2em;
+      }
+
+      .call-screen .call-status {
+        font-size: 1em;
+      }
+
+      .call-screen .end-call {
+        font-size: 1em;
+      }
+    }
+
+    /* For smaller phones */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .hero button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+      }
+
+      .call-screen h2 {
+        font-size: 1.8em;
+      }
+
+      .call-screen p {
+        font-size: 1em;
+      }
+
+      .call-screen .call-status {
+        font-size: 0.9em;
+      }
+
+      .call-screen .end-call {
+        font-size: 0.9em;
+        padding: 10px 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section with Big Photo -->
+  <div class="hero">
+    <h1>For My Hubby</h1>
+    <button onclick="startCall()">Call Hubby</button>
+  </div>
+
+  <!-- Fake Phone Call Screen -->
+  <div class="call-screen" id="callScreen">
+    <h2>Incoming Call</h2>
+    <p>From: <strong>Hubby</strong></p>
+    <p>Phone: <strong>9529801391</strong></p>
+    <p class="call-status" id="callStatus">Dialing...</p>
+    <button class="end-call" onclick="endCall()">End Call</button>
+  </div>
+
+  <script>
+    // JavaScript to simulate the call
+    function startCall() {
+      // Show the call screen and initiate call status update
+      document.getElementById("callScreen").style.display = "flex";
+
+      // Simulate dialing (real phone number dialing will be handled by 'tel:' link)
+      setTimeout(function() {
+        document.getElementById("callStatus").textContent = "Connecting...";
+      }, 2000); // Simulate "dialing" delay
+
+      setTimeout(function() {
+        document.getElementById("callStatus").textContent = "Call Connected!";
+      }, 4000); // Change status to "Connected" after 4 seconds
+
+      // Use a 'tel:' link to simulate a phone call on mobile devices
+      setTimeout(function() {
+        window.location.href = "tel:9529801391"; // Initiate the phone call
+      }, 6000); // After the fake "connected" status, initiate the real call
+    }
+
+    // Function to end the call
+    function endCall() {
+      document.getElementById("callScreen").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
