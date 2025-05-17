@@ -1,209 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Ukya</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Call My Loved Ones</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    /* General body styles */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
+      background-color: #f0f0f0;
       color: #333;
-      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
-    /* Hero Section with Big Photo */
-    .hero {
-      height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x1000'); /* Replace with your background image */
-      background-size: cover;
-      background-position: center;
+    .phone-frame {
+      max-width: 400px;
+      margin: 20px auto;
+      border: 2px solid #333;
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header {
+      background-color: #2c3e50;
       color: white;
-      text-align: center;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
+      padding: 15px;
+      font-size: 1.5em;
+      justify-content: center;
       position: relative;
     }
 
-    .hero h1 {
-      font-size: 3.5em;
+    .header .material-icons {
+      position: absolute;
+      left: 15px;
+      font-size: 28px;
+    }
+
+    .call-list {
+      list-style: none;
+      padding: 0;
       margin: 0;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    .hero button {
-      margin-top: 20px;
-      padding: 15px 30px;
-      background-color: #ff6347;
-      border: none;
-      font-size: 1.5em;
-      color: white;
+    .call-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
       cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s;
     }
 
-    .hero button:hover {
-      background-color: #ff4500;
+    .call-item:hover {
+      background: #f9f9f9;
     }
 
-    /* Phone Call Screen (Mobile-Friendly) */
+    .call-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .call-info img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .call-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .call-text strong {
+      font-size: 1.1em;
+    }
+
+    .call-icon {
+      color: #27ae60;
+      font-size: 24px;
+    }
+
     .call-screen {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.85);
       color: white;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       z-index: 9999;
-      animation: fadeIn 1s ease-in-out;
-      padding: 20px;
-    }
-
-    .call-screen h2 {
-      font-size: 2.5em;
-      margin: 20px;
-    }
-
-    .call-screen p {
-      font-size: 1.4em;
-      margin: 10px;
-    }
-
-    .call-screen .call-status {
-      font-size: 1.2em;
-      margin: 20px;
-    }
-
-    .call-screen .end-call {
-      margin-top: 30px;
-      padding: 12px 24px;
-      background-color: #ff6347;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    .call-screen .end-call:hover {
-      background-color: #ff4500;
+      text-align: center;
     }
 
     .call-screen img {
-      border-radius: 50%;
       width: 100px;
       height: 100px;
+      border-radius: 50%;
       margin-bottom: 20px;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .call-screen h2 {
+      margin: 10px 0;
     }
 
-    /* Responsive Design for Mobile */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5em;
-      }
+    .call-status {
+      margin: 20px;
+      font-size: 1.1em;
+    }
 
-      .hero button {
-        padding: 12px 25px;
-        font-size: 1.3em;
-      }
+    .end-call {
+      background-color: #e74c3c;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
 
-      .call-screen h2 {
-        font-size: 2em;
-      }
+    .end-call:hover {
+      background-color: #c0392b;
+    }
 
-      .call-screen p {
+    @media(max-width: 480px) {
+      .header {
         font-size: 1.2em;
       }
-
-      .call-screen .call-status {
-        font-size: 1em;
-      }
-
-      .call-screen .end-call {
-        font-size: 1em;
+      .call-info img {
+        width: 45px;
+        height: 45px;
       }
     }
-
-    /* For smaller phones */
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2em;
-      }
-
-      .hero button {
-        padding: 10px 20px;
-        font-size: 1.2em;
-      }
-
-      .call-screen h2 {
-        font-size: 1.8em;
-      }
-
-      .call-screen p {
-        font-size: 1em;
-      }
-
-      .call-screen .call-status {
-        font-size: 0.9em;
-      }
-
-      .call-screen .end-call {
-        font-size: 0.9em;
-        padding: 10px 20px;
-      }
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- Hero Section with Big Photo -->
-  <div class="hero">
-    <h1>For My Ukya</h1>
-    <button onclick="startCall()">Call Ukya</button>
+  <div class="phone-frame">
+    <div class="header">
+      <span class="material-icons">contacts</span>
+      My Contacts
+    </div>
+    <ul class="call-list">
+      <li class="call-item" onclick="startCall('Ukya', '9529801391', '1.jpg')">
+        <div class="call-info">
+          <img src="1.jpg" alt="Ukya" />
+          <div class="call-text">
+            <strong>Ukya</strong>
+            <span>9529801391</span>
+          </div>
+        </div>
+        <span class="material-icons call-icon">call</span>
+      </li>
+      <li class="call-item" onclick="startCall('Sakshi', '8080736250', 'sakshi.jpg')">
+        <div class="call-info">
+          <img src="sakshi.jpg" alt="Sakshi" />
+          <div class="call-text">
+            <strong>Sakshi</strong>
+            <span>8080736250</span>
+          </div>
+        </div>
+        <span class="material-icons call-icon">call</span>
+      </li>
+      <li class="call-item" onclick="startCall('Papa Ji', '9172915922', 'papa.jpg')">
+        <div class="call-info">
+          <img src="papa.jpg" alt="Papa Ji" />
+          <div class="call-text">
+            <strong>Papa Ji</strong>
+            <span>9172915922</span>
+          </div>
+        </div>
+        <span class="material-icons call-icon">call</span>
+      </li>
+      <li class="call-item" onclick="startCall('Brother', '9172915923', 'brother.jpg')">
+        <div class="call-info">
+          <img src="brother.jpg" alt="Brother" />
+          <div class="call-text">
+            <strong>Brother</strong>
+            <span>9172915923</span>
+          </div>
+        </div>
+        <span class="material-icons call-icon">call</span>
+      </li>
+      <li class="call-item" onclick="startCall('Didi', '7498722705', 'didi.jpg')">
+        <div class="call-info">
+          <img src="didi.jpg" alt="Didi" />
+          <div class="call-text">
+            <strong>Didi</strong>
+            <span>7498722705</span>
+          </div>
+        </div>
+        <span class="material-icons call-icon">call</span>
+      </li>
+    </ul>
   </div>
 
-  <!-- Fake Phone Call Screen -->
+  <!-- Call Screen -->
   <div class="call-screen" id="callScreen">
-    <img src="1.jpg" alt="Ukya's photo"> <!-- Replace with Ukya's actual photo -->
-    <h2>Incoming Call</h2>
-    <p>From: <strong>Ukya</strong></p>
-    <p>Phone: <strong>9529801391</strong></p>
+    <img id="callPhoto" src="" alt="Contact Photo" />
+    <h2 id="callName">Calling...</h2>
+    <p id="callNumber"></p>
     <p class="call-status" id="callStatus">Dialing...</p>
-    <a href="tel:9529801391"><button class="end-call">End Call</button></a>
+    <a id="callLink" href=""><button class="end-call">End Call</button></a>
   </div>
 
   <script>
-    // JavaScript to simulate the call
-    function startCall() {
-      // Show the call screen and initiate call status update
-      document.getElementById("callScreen").style.display = "flex";
+    function startCall(name, number, photo) {
+      const screen = document.getElementById("callScreen");
+      screen.style.display = "flex";
 
-      // Simulate dialing (real phone number dialing will be handled by 'tel:' link)
-      setTimeout(function() {
+      document.getElementById("callPhoto").src = photo;
+      document.getElementById("callName").textContent = name;
+      document.getElementById("callNumber").textContent = number;
+      document.getElementById("callStatus").textContent = "Dialing...";
+      document.getElementById("callLink").href = `tel:${number}`;
+
+      setTimeout(() => {
         document.getElementById("callStatus").textContent = "Connecting...";
-      }, 2000); // Simulate "dialing" delay
+      }, 2000);
 
-      setTimeout(function() {
+      setTimeout(() => {
         document.getElementById("callStatus").textContent = "Call Connected!";
-      }, 4000); // Change status to "Connected" after 4 seconds
+      }, 4000);
     }
-  </script>
 
+    document.querySelector(".end-call").addEventListener("click", () => {
+      document.getElementById("callScreen").style.display = "none";
+    });
+  </script>
 </body>
 </html>
